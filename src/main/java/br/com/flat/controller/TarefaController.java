@@ -18,29 +18,29 @@ public class TarefaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Tarefa>> listarTarefas() {
+    public ResponseEntity<List<Tarefa>> listar() {
         return ResponseEntity.ok(tarefaService.listarTodas());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Tarefa> buscarTarefaPorId(@PathVariable Long id) {
+    public ResponseEntity<Tarefa> buscarPorId(@PathVariable Long id) {
         return ResponseEntity.ok(tarefaService.buscarPorId(id));
     }
 
     @PostMapping
-    public ResponseEntity<Tarefa> adicionarTarefa(@RequestBody Tarefa tarefa) {
+    public ResponseEntity<Tarefa> adicionar(@RequestBody Tarefa tarefa) {
         tarefaService.adicionar(tarefa);
         return ResponseEntity.ok(tarefa);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable Long id, @RequestBody Tarefa tarefa) {
+    public ResponseEntity<Tarefa> atualizar(@PathVariable Long id, @RequestBody Tarefa tarefa) {
         tarefaService.atualizar(id, tarefa);
         return ResponseEntity.ok(tarefa);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removerTarefa(@PathVariable Long id) {
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
         tarefaService.excluir(id);
         return ResponseEntity.ok().build();
     }

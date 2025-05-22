@@ -3,6 +3,7 @@ package br.com.flat.domain.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class Tarefa {
@@ -17,10 +18,13 @@ public class Tarefa {
     @Column(nullable = false)
     private LocalDate data;
 
-    @Column
+    @Column(nullable = false)
+    private LocalTime hora;
+
+    @Column(nullable = false)
     private String responsavel;
 
-    @Column
+    @Column(nullable = false)
     private Boolean concluida;
 
     public Long getId() {
@@ -45,6 +49,14 @@ public class Tarefa {
 
     public void setData(LocalDate data) {
         this.data = data;
+    }
+
+    public LocalTime getHora() {
+        return hora;
+    }
+
+    public void setHora(LocalTime hora) {
+        this.hora = hora;
     }
 
     public String getResponsavel() {
