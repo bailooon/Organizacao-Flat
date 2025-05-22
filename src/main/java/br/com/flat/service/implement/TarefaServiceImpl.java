@@ -34,12 +34,21 @@ public class TarefaServiceImpl implements TarefaService {
     }
 
     @Override
-    public void atualizar(Long id, Tarefa tarefa) {
-        Optional<Tarefa> tarefaAtual = tarefaRepository.findById(id);
-        if(tarefaAtual.isPresent()) {
-            tarefaRepository.save(tarefa);
+    public void atualizar(Long id, Tarefa novaTarefa) {
+        Optional<Tarefa> tarefaAtualOptional = tarefaRepository.findById(id);
+        if (tarefaAtualOptional.isPresent()) {
+            Tarefa tarefaAtual = tarefaAtualOptional.get();
+
+            tarefaAtual.setDescricao(novaTarefa.getDescricao());
+            tarefaAtual.setData(novaTarefa.getData());
+            tarefaAtual.setHora(novaTarefa.getHora());
+            tarefaAtual.setResponsavel(novaTarefa.getResponsavel());
+            tarefaAtual.setConcluida(novaTarefa.getConcluida());
+
+            tarefaRepository.save(tarefaAtual);
         }
     }
+
 
     @Override
     public void excluir(Long id) {
